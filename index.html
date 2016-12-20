@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>chipmunk</title>
+		<style type="text/css">
+			
+			.jianbian{ 
+				
+				width:100%; 
+				
+				height:635px; 
+				
+				FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#84C1FF,endColorStr=#FFFFFF); /*IE 6 7 8*/ 
+				
+				background: -ms-linear-gradient(top, #84C1FF,  #FFFFFF);/* IE 10 */
+				
+				background:-moz-linear-gradient(top,#84C1FF,#FFFFFF);/*火狐*/ 
+				
+				background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#84C1FF), to(#FFFFFF));/*谷歌*/ 
+				
+				background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#84C1FF), to(#FFFFFF)); /* Safari 4-5, Chrome 1-9*/
+				
+				background: -webkit-linear-gradient(top, #84C1FF, #FFFFFF);   /*Safari5.1 Chrome 10+*/
+				
+				background: -o-linear-gradient(top, #84C1FF, #FFFFFF);  /*Opera 11.10+*/
+				
+			} 
+			body{
+				font-family: "微软雅黑";
+				/*margin: 60px 100px;
+				background: Azure;*/
+				margin: 0 0;
+			}
+			div.u{
+				float: left;
+				width: 100px;
+				height: 30px; 
+				border: 1px solid royalblue; 
+				margin-left: 15px;
+				margin-top: 10px;
+				cursor: pointer;
+				
+				-moz-border-radius: 5px; 
+    			-webkit-border-radius: 5px; 
+    			border-radius:5px;  
+			}
+			div.u:hover{
+				background: #B7FF4A;
+			}
+				
+			div.w{
+				text-align: center;
+				margin: 0 auto;
+				//border: 1px solid red;
+				margin-top: 2px;
+			}
+			input.k{
+				height: 32px;
+				width: 300px;
+				font-family: "微软雅黑";
+				font-size: 16px;
+				-moz-border-radius: 5px; 
+    			-webkit-border-radius: 5px; 
+    			border-radius:5px;
+			}
+			input.b{
+				height: 36px;
+				width: 100px;
+				font-family: "微软雅黑";
+    			font-size: 16px;
+    			background: white;
+				-moz-border-radius: 5px; 
+    			-webkit-border-radius: 5px; 
+    			border-radius:5px;
+    			
+    			
+			}
+			
+		</style>
+		<script type="text/javascript">
+		
+			$=function(ID){return document.getElementById(ID);};
+						
+			function search(){
+				var k = $("searchtext").value;
+				//alert(k);
+				var v = encodeURI(k);
+				window.open("https://www.baidu.com/s?wd="+v);
+			}
+			function translateText(){
+				var k = $("translatetext").value;
+//				alert(k);
+				var v = encodeURI(k);
+				window.open("http://dict.youdao.com/w/eng/"+v);
+			}
+			function openWeb(u){
+				window.open(u);
+//				window.location.href=u;
+			}
+			function huiche(e) {
+				var ev= window.event||e;
+				if (ev.keyCode == 13) {
+					search();
+				}
+			}
+			function fanyi(e) {
+				var ev= window.event||e;
+				if (ev.keyCode == 13) {
+					translateText();
+				}
+			}
+			function clearInputText(o){
+				 o.value="";
+			}
+			function focusInputText(e){
+				var ev= window.event||e;
+				
+				var active_id = document.activeElement.id;
+				var bool_f = active_id=="translatetext";
+				var bool_j = active_id=="searchtext";
+				if (bool_f||bool_j) {
+					
+				} else{
+					if (ev.keyCode == 70) {//f--按下f键弹起时，去翻译输入框
+						$("translatetext").focus();
+					}else if (ev.keyCode == 74) {//j--按下j键弹起时，去检索输入框
+						$("searchtext").focus();
+					} else{
+						
+					}	
+				}
+			}
+			
+		</script>
+	</head>
+	<body onkeyup="focusInputText(event)" class="jianbian">
+		<div align="center" style="margin-top: 40px;font-family: STXingkai;font-size: 36px;">Chipmunk Navigation</div>
+		<div align="center" style="margin-top: 40px;">
+			<input id="searchtext" type="text" class="k" onmouseover="this.focus()" onfocus="this.select()" onkeydown="huiche(event)" ondblclick="clearInputText(this)"/>
+			<input type="button" class="b" value="搜索" onclick="search()" />
+		</div>
+		<div align="center" style="margin-top: 40px;">
+			<input id="translatetext" type="text" class="k" onmouseover="this.focus()" onfocus="this.select()" onkeydown="fanyi(event)" ondblclick="clearInputText(this)"/>
+			<input type="button" class="b" value="翻译" onclick="translateText()" />
+		</div>
+		<div style="margin-top:30px;margin-left: 50px;">
+			<table>
+				 <tr><td>
+				 		<div class="u" align="center" onclick="openWeb('https://www.baidu.com')">
+							<div class="w">百度</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.sina.com.cn')">
+							<div class="w">新浪</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.qq.com')">
+							<div class="w">QQ</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.163.com')">
+							<div class="w">网易</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.sohu.com')">
+							<div class="w">搜狐</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.le.com')">
+							<div class="w">乐视</div>
+						</div>
+				 </td></tr>
+				 <tr><td>
+				 		<div class="u" align="center"  onclick="openWeb('https://www.zhihu.com')">
+							<div class="w">知乎</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://weibo.com')">
+							<div class="w">weibo</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('https://tieba.baidu.com/')">
+							<div class="w">贴吧</div>
+						</div>		
+				 </td></tr>
+				 <tr><td>
+				 		<div class="u" align="center"  onclick="openWeb('http://mail.sina.com.cn')">
+							<div class="w">新浪邮箱</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://mail.126.com')">
+							<div class="w">126邮箱</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('https://mail.qq.com')">
+							<div class="w">QQ邮箱</div>
+						</div>
+				 </td></tr>
+				 <tr><td>
+				 		<div class="u" align="center"  onclick="openWeb('http://itace.iteye.com')">
+							<div class="w">itace</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.csdn.net')">
+							<div class="w">csdn</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://www.apache.org')">
+							<div class="w">apache</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('https://github.com')">
+							<div class="w">github</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://spring.io')">
+							<div class="w">spring</div>
+						</div>
+						<div class="u" align="center"  onclick="openWeb('http://stackoverflow.com')">
+							<div class="w">stackflow</div>
+						</div>
+				 </td></tr>
+				 <tr><td>
+				 	<div class="u" align="center"  onclick="openWeb('http://sports.sina.com.cn')">
+						<div class="w">新浪体育</div>
+					</div>
+					<div class="u" align="center"  onclick="openWeb('http://sports.qq.com')">
+						<div class="w">腾讯体育</div>
+					</div>
+					<div class="u" align="center"  onclick="openWeb('http://www.lesports.com')">
+						<div class="w">乐视体育</div>
+					</div>
+					<div class="u" align="center"  onclick="openWeb('http://tv.cctv.com/live/cctv1/')">
+						<div class="w">央视频道</div>
+					</div>
+					<div class="u" align="center"  onclick="openWeb('http://v.iqilu.com/live/sdtv/')">
+						<div class="w">山东频道</div>
+					</div>
+				 </td></tr>
+				 <tr><td>
+				 	<div class="u" align="center"  onclick="openWeb('http://www.nationalgeographic.com.cn/')">
+						<div class="w">国家地理</div>
+					</div>
+					<div class="u" align="center"  onclick="openWeb('http://www.dili360.com/')">
+						<div class="w">中国国家地理</div>
+					</div>
+				 </td></tr>
+			</table>
+			
+		</div>
+		
+	</body>
+</html>
