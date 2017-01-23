@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>encrypt</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<style type="text/css">
+			
+			body{
+				font-family: "微软雅黑";
+				/*margin: 60px 100px;
+				background: Azure;*/
+				margin: 0 0;
+
+			}
+			div.u{
+				float: left;
+				width: 100px;
+				height: 30px; 
+				border: 1px solid royalblue; 
+				margin-left: 15px;
+				margin-top: 10px;
+				cursor: pointer;
+				
+				-moz-border-radius: 5px; 
+    			-webkit-border-radius: 5px; 
+    			border-radius:5px;  
+			}
+			div.u:hover{
+				background: #B7FF4A;
+			}
+				
+			div.w{
+				text-align: center;
+				margin: 0 auto;
+				//border: 1px solid red;
+				margin-top: 2px;
+			}
+			input.k{
+				height: 32px;
+				width: 300px;
+				font-family: "微软雅黑";
+				font-size: 16px;
+				-moz-border-radius: 5px; 
+    			-webkit-border-radius: 5px; 
+    			border-radius:5px;
+			}
+			input.b{
+				height: 36px;
+				width: 100px;
+				font-family: "微软雅黑";
+    			font-size: 16px;
+    			background: white;
+				-moz-border-radius: 5px; 
+    			-webkit-border-radius: 5px; 
+    			border-radius:5px;
+    			
+    			
+			}
+			
+		</style>
+		<script type="text/javascript">
+		
+			$=function(ID){return document.getElementById(ID);};
+						
+			num=function(s){
+				var reg=new RegExp("^[0-9]+$");
+				return reg.test(s);
+			};  
+			function encrypttext(){
+				var a = $("a").value;
+				var b = $("b").value;
+				var c = $("c");
+				var d=0;
+				if (num(b)) {
+					d = parseInt(b);
+				}
+				var arr=a.match(/./g); 
+				var f = "";
+				for (var i = 0; i <arr.length; i++) {
+					var e = arr[i].charCodeAt(0);
+					e=e+d;
+					if(e<100){
+						f=f+"0"+e;
+					}else{
+						f=f+""+e;
+					}
+					
+				}
+
+				c.innerText=f;
+			}
+			function openWeb(u){
+				window.open(u);
+//				window.location.href=u;
+			}
+			function huiche(e) {
+				var ev= window.event||e;
+				if (ev.keyCode == 13) {
+					search();
+				}
+			}
+			function fanyi(e) {
+				var ev= window.event||e;
+				if (ev.keyCode == 13) {
+					translateText();
+				}
+			}
+			function clearInputText(o){
+				 o.value="";
+			}
+					
+		</script>
+	</head>
+	<body >
+		<div align="center" style="margin-top: 40px;font-family:微软雅黑;font-size: 36px;">ENCRYPT</div>
+		<div align="center" style="margin-top: 40px;">
+			<input id="a" type="text" class="k" onmouseover="this.focus()" onfocus="this.select()" ondblclick="clearInputText(this)"/>
+		</div>
+		<div align="center" style="margin-top: 40px;">
+			<input id="b" type="text" class="k" onmouseover="this.focus()" onfocus="this.select()" ondblclick="clearInputText(this)"/>			
+		</div>
+		<div align="center" style="margin-top: 40px;">
+			<input type="button" class="b" value="encrypt" onclick="encrypttext()" />			
+		</div>
+		<div align="center" style="margin-top: 40px;">
+			<label id="c"></label>
+		</div>
+		
+	</body>
+</html>
